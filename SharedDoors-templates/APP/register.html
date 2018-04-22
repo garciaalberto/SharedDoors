@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Doors - {{ title }}</title>
+</head>
+<body>
+    <h1> Register </h1><br>
+    <form action="#" method="post">
+        <label for="your_name">Name: </label><br>
+        <input id="your_name" type="text" name="your_name" value="{{ current_name }}"><br>
+        <br>
+        <label for="your_mail">Email: </label><br>
+        <input id="your_mail" type="text" name="your_mail" value="{{ current_mail }}"><br>
+        <br>
+        <label for="your_pass">Password: </label><br>
+        <input id="your_pass" type="text" name="your_pass" value="{{ current_pass }}"><br>
+        <br>
+        <label for="your_pass2">Password verification: </label><br>
+        <input id="your_pass2" type="text" name="your_pass2" value="{{ current_pass2 }}"><br>
+        <br>
+        <button type="submit"> Register now </button>
+    </form>
+</body>
+</html>

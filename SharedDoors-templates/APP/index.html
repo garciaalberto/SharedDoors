@@ -5,9 +5,10 @@
     <title>Shared Doors - {{ title }}</title>
 </head>
 <body>
+<h1> Welcome to Shared Doors </h1><br>
 <ul>
-    <li><a href="/user/login">Log in</a> </li>
-    <li><a href="/user/register">Register</a> </li>
+    <li><a href="{% url 'login' %}">Log in</a> </li>
+    <li><a href="{% url 'register' %}">Register</a> </li>
 </ul>
 </body>
 </html>

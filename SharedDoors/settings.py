@@ -25,8 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'SharedDoorsAPP.apps.ShareddoorsappConfig',
-    'User.apps.UserConfig'
+    'APP.apps.APPConfig'
 ]
 
 MIDDLEWARE = [

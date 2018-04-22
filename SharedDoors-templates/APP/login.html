@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Doors - {{ title }}</title>
+</head>
+<body>
+<ul>
+    <form action="/your-mail/" method="post">
+    <label for="your_mail">Enter your email: </label>
+    <input id="your_mail" type="text" name="your_mail" value="{{ current_mail }}">
+    <label for="your_pass">Enter your password: </label>
+    <input id="your_pass" type="text" name="your_pass" value="{{ current_pass }}">
+    <input type="submit" value="Enter">
+</form>
+</ul>
+</body>
+</html>

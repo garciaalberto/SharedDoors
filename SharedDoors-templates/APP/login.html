@@ -6,14 +6,15 @@
 </head>
 <body>
 <h1> Log in </h1><br>
-    <form action="#" method="post">
+    <form action="{% url 'validation_login' %}" method="post">
+        {% csrf_token %}
         <label for="your_mail">Enter your email: </label><br>
-        <input id="your_mail" type="text" name="your_mail" value="{{ current_mail }}"><br>
+        <input id="your_mail" type="text" name="mail" value="{{ mail }}"><br>
         <br>
         <label for="your_pass">Enter your password: </label><br>
-        <input id="your_pass" type="text" name="your_pass" value="{{ current_pass }}"><br>
+        <input id="your_pass" type="text" name="pass" value="{{ pass }}"><br>
         <br>
-        <button type="submit"> Log in now </button>
+        <input type="submit" value="Log in now">
     </form>
 </body>
 </html>

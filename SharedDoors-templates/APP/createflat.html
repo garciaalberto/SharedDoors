@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Doors - {{ title }}</title>
+</head>
+<body>
+<h1> Create flat </h1><br>
+<ul>
+<form action="{% url 'validation_createflat' %}" method="post">
+        {% csrf_token %}
+        <label for="flat_name">Choose a name: </label><br>
+        <input id="flat_name" type="text" name="flat_name" value="{{ flat_name }}"><br>
+        <br>
+        <input type="submit" value="Create flat now">
+    </form>
+</ul>
+</body>
+</html>

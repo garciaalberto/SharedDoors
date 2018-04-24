@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^register/validation/', views.validation_register, name='validation_register'),
     url(r'^login/validation/', views.validation_login, name='validation_login'),
     url(r'^flat/', views.flat, name='flat'),
-    url(r'^flat/create', views.createflat, name='create_flat')
+    url(r'^flat-create', views.createflat, name='createflat'),
+    url(r'^flat-create/validation', views.validation_createflat, name='validation_createflat')
 ]
 

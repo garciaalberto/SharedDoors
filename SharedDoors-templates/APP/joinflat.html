@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Doors - {{ title }}</title>
+</head>
+<body>
+<h1> Join flat </h1><br>
+<ul>
+<form action="{% url 'validation_joinflat' %}" method="post">
+        {% csrf_token %}
+        <label for="flat_key">Insert the flat key: </label><br>
+        <input id="flat_key" type="text" name="flat_key" value="{{ flat_key }}"><br>
+        <br>
+        <input type="submit" value="Join flat now">
+    </form>
+</ul>
+</body>
+</html>

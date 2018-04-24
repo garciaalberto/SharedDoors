@@ -31,7 +31,7 @@ def register(request):
     user_mail = request.POST.get('mail', '')
     user_pass = request.POST.get('pass', '')
     user_pass2 = request.POST.get('pass', '')
-    if len(user_name) < 255 and len(user_mail) < 255 and len(user_pass) < 255 and user_pass == user_pass2 and user_name\
+    if len(user_name) < 256 and len(user_mail) < 256 and len(user_pass) < 256 and user_pass == user_pass2 and user_name\
             != '' and user_mail != '' and user_pass != '':
         try:
             User.objects.get(mail=request)
@@ -55,6 +55,10 @@ def validation_createflat(request):
     return None
 
 
+def validation_joinflat(request):
+    return None
+
+
 def flat(request):
     user = User.objects.get(id=request.session['user_id'])
     return render(request, '../SharedDoors-templates/APP/flat.html', {
@@ -66,7 +70,7 @@ def flat(request):
 def createflat(request):
     flat_name = request.POST.get('flat_name', '')
     flat_key = RandomizeKey()
-    if len(flat_name) < 255 and flat_name != '':
+    if len(flat_name) < 256 and flat_name != '':
         try:
             Flat.objects.get(key=flat_key)
         except(KeyError, Flat.DoesNotExist):
@@ -77,6 +81,20 @@ def createflat(request):
             user.save()
             return HttpResponseRedirect('/app/home/')
     return render(request, '../SharedDoors-templates/APP/createflat.html', {'title': 'Create flat'})
+
+
+def joinflat(request):
+    flat_key = request.POST.get('flat_key', '')
+    if len(flat_key) < 16 and flat_key != '':
+        try:
+            flat = Flat.objects.get(key=flat_key)
+            user = User.objects.get(id=request.session['user_id'])
+            user.allocation = Flat.objects.get(id=flat.id)
+            user.save()
+            return HttpResponseRedirect('/app/home/')
+        except(KeyError, Flat.DoesNotExist):
+            pass
+    return render(request, '../SharedDoors-templates/APP/joinflat.html', {'title': 'Join flat'})
 
 
 def RandomizeKey():

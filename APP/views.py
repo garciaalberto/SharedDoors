@@ -97,5 +97,11 @@ def joinflat(request):
     return render(request, '../SharedDoors-templates/APP/joinflat.html', {'title': 'Join flat'})
 
 
+def home(request):
+    user = User.objects.get(id=request.session['user_id'])
+    flat = user.allocation
+    return render(request, '../SharedDoors-templates/APP/home.html', {'title': 'Home', 'user_name': user.name, 'flat_name': flat.name})
+
+
 def RandomizeKey():
     return ''.join([random.choice(string.ascii_letters + string.digits) for n in range(15)])

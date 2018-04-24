@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^flat-create', views.createflat, name='createflat'),
     url(r'^flat-create/validation', views.validation_createflat, name='validation_createflat'),
     url(r'^flat-join', views.joinflat, name='joinflat'),
-    url(r'^flat-join/validation', views.validation_joinflat, name='validation_joinflat')
+    url(r'^flat-join/validation', views.validation_joinflat, name='validation_joinflat'),
+    url(r'^home/', views.home, name='home')
 ]
 

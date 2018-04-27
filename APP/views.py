@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.http import HttpResponseRedirect
+from .crud import *
 import random
 import string
 
@@ -30,16 +31,13 @@ def register(request):
     user_name = request.POST.get('name', '')
     user_mail = request.POST.get('mail', '')
     user_pass = request.POST.get('pass', '')
-    user_pass2 = request.POST.get('pass', '')
-    if len(user_name) < 256 and len(user_mail) < 256 and len(user_pass) < 256 and user_pass == user_pass2 and user_name\
-            != '' and user_mail != '' and user_pass != '':
-        try:
+    try:
+        if user_mail != '':
             User.objects.get(mail=request)
-        except(KeyError, User.DoesNotExist):
-            new_user = User(mail=user_mail, name=user_name, password=user_pass, points_total=0, points_monthly=0)
-            new_user.save()
-            request.session['user_id'] = new_user.id
-            return HttpResponseRedirect('/app/flat/')
+    except(KeyError, User.DoesNotExist):
+        new_user = create_user(user_name, user_mail, user_pass)
+        request.session['user_id'] = new_user.id
+        return HttpResponseRedirect('/app/flat/')
     return render(request, '../SharedDoors-templates/APP/register.html', {'title': 'Register'})
 
 
@@ -69,7 +67,7 @@ def flat(request):
 
 def createflat(request):
     flat_name = request.POST.get('flat_name', '')
-    flat_key = RandomizeKey()
+    flat_key = randomize_key()
     if len(flat_name) < 256 and flat_name != '':
         try:
             Flat.objects.get(key=flat_key)
@@ -103,5 +101,12 @@ def home(request):
     return render(request, '../SharedDoors-templates/APP/home.html', {'title': 'Home', 'user_name': user.name, 'flat_name': flat.name})
 
 
-def RandomizeKey():
+def score_monthly(request):
+    session_user = User.objects.get(id=request.session['user_id'])
+    session_flat = session_user.allocation
+    user_list = User.objects.filter(allocation=Flat.objects.get(id=session_flat.id))
+    return render(request, '../SharedDoors-templates/APP/scores.html', {'title': 'Score', 'user_list': user_list})
+
+
+def randomize_key():
     return ''.join([random.choice(string.ascii_letters + string.digits) for n in range(15)])

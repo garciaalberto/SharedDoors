@@ -12,13 +12,13 @@
         <input id="name" type="text" name="name" value="{{ user_name }}"><br>
         <br>
         <label for="mail">Email: </label><br>
-        <input id="mail" type="text" name="mail" value="{{ user_mail }}"><br>
+        <input pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" id="mail" type="text" name="mail" value="{{ user_mail }}"><br>
         <br>
         <label for="pass">Password: </label><br>
-        <input id="pass" type="text" name="pass" value="{{ user_pass }}"><br>
+        <input id="pass" type="password" name="pass" value="{{ user_pass }}"><br>
         <br>
         <label for="pass2">Password verification: </label><br>
-        <input id="pass2" type="text" name="pass2" value="{{ user_pass2 }}"><br>
+        <input id="pass2" type="password" name="pass2" value="{{ user_pass2 }}"><br>
         <br>
         <button type="submit"> Register now </button>
     </form>

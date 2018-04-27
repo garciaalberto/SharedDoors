@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Doors - {{ title }}</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawStuff);
+
+        function drawStuff() {
+            var rawData = [];
+            var i = 1;
+            rawData[0] = ['User', 'Score']
+            {% for user in user_list %}
+                rawData [i] = ['{{ user.name }}', {{ user.points_monthly }}];
+                i++;
+            {% endfor %}
+            var data = new google.visualization.arrayToDataTable(rawData);
+            var options = {
+                title: 'Montly score',
+                legend: { position: 'none' },
+                chart: { title: 'Monthly score',
+                    subtitle: 'Based on the calendar' },
+                bars: 'horizontal',
+                axes: {
+                    x: {
+                        0: { side: 'top', label: 'Points'}
+                    }
+                },
+                bar: { groupWidth: "90%" }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('chart'));
+            chart.draw(data, options);
+        };
+    </script>
+</head>
+<body>
+<div id="chart"></div>
+<p><a href="{% url 'score_total' %}">Total scores</a> </p>
+</body>
+</html>

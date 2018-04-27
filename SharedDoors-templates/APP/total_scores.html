@@ -12,12 +12,10 @@
             var i = 1;
             rawData[0] = ['User', 'Score']
             {% for user in user_list %}
-                rawData [i] = ['{{ user.name }}', {{ user.points_monthly }}];
+                rawData [i] = ['{{ user.name }}', {{ user.points_total }}];
                 i++;
             {% endfor %}
-            console.log(rawData);
             var data = new google.visualization.arrayToDataTable(rawData);
-
             var options = {
                 title: 'Montly score',
                 legend: { position: 'none' },
@@ -32,13 +30,12 @@
                 bar: { groupWidth: "90%" }
             };
 
-            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+            var chart = new google.charts.Bar(document.getElementById('chart'));
             chart.draw(data, options);
         };
     </script>
 </head>
 <body>
-<div id="top_x_div"></div>
-
+<div id="chart"></div>
 </body>
 </html>

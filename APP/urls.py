@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^flat-join', views.joinflat, name='joinflat'),
     url(r'^flat-join/validation', views.validation_joinflat, name='validation_joinflat'),
     url(r'^home/', views.home, name='home'),
-    url(r'^score/', views.score_monthly, name='score_monthly')
+    url(r'^score_monthly', views.score_monthly, name='score_monthly'),
+    url(r'^score_total', views.score_total, name='score_total')
+
 ]
 

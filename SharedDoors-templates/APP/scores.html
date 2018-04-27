@@ -22,9 +22,9 @@
             {% endfor %}
             var data = new google.visualization.arrayToDataTable(rawData);
             var options = {
-                title: 'Montly score',
+                title: '{{ type }} score',
                 legend: { position: 'none' },
-                chart: { title: 'Monthly score',
+                chart: { title: '{{ type }} score',
                     subtitle: 'Based on the calendar' },
                 bars: 'horizontal',
                 axes: {

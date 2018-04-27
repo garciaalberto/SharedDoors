@@ -12,7 +12,12 @@
             var i = 1;
             rawData[0] = ['User', 'Score']
             {% for user in user_list %}
+                {% if monthly %}
+                rawData [i] = ['{{ user.name }}', {{ user.points_monthly }}];
+                {% else %}
+                    document.getElementById("link").style.visibility = "hidden";
                 rawData [i] = ['{{ user.name }}', {{ user.points_total }}];
+                {% endif %}
                 i++;
             {% endfor %}
             var data = new google.visualization.arrayToDataTable(rawData);
@@ -37,5 +42,6 @@
 </head>
 <body>
 <div id="chart"></div>
+<p id="link"><a href="{% url 'score_total' %}">Total scores</a> </p>
 </body>
 </html>

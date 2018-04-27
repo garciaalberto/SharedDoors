@@ -105,14 +105,14 @@ def score_monthly(request):
     session_user = User.objects.get(id=request.session['user_id'])
     session_flat = session_user.allocation
     user_list = User.objects.filter(allocation=Flat.objects.get(id=session_flat.id))
-    return render(request, '../SharedDoors-templates/APP/monthly_scores.html', {'title': 'Score', 'user_list': user_list})
+    return render(request, '../SharedDoors-templates/APP/scores.html', {'title': 'Score', 'user_list': user_list, 'monthly': True})
 
 
 def score_total(request):
     session_user = User.objects.get(id=request.session['user_id'])
     session_flat = session_user.allocation
     user_list = User.objects.filter(allocation=Flat.objects.get(id=session_flat.id))
-    return render(request, '../SharedDoors-templates/APP/total_scores.html', {'title': 'Total Score', 'user_list': user_list})
+    return render(request, '../SharedDoors-templates/APP/scores.html', {'title': 'Total Score', 'user_list': user_list})
 
 
 def randomize_key():

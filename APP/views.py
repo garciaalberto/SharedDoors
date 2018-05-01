@@ -12,7 +12,7 @@ def index(request):
 
 def login(request):
     try:
-        form_user = User.objects.get(mail=request.POST['mail'])
+        form_user = get_user(request.POST['mail'])
         if form_user.password == request.POST['pass']:
             request.session['user_id'] = form_user.id
             if form_user.allocation is None:
@@ -58,7 +58,7 @@ def validation_joinflat(request):
 
 
 def flat(request):
-    user = User.objects.get(id=request.session['user_id'])
+    user =  get_session_user(request)
     return render(request, '../SharedDoors-templates/APP/flat.html', {
         'title': 'Have flat?',
         'user_name': user.name
@@ -86,7 +86,7 @@ def joinflat(request):
     if len(flat_key) < 16 and flat_key != '':
         try:
             flat = Flat.objects.get(key=flat_key)
-            user = User.objects.get(id=request.session['user_id'])
+            user = get_session_user(request)
             user.allocation = Flat.objects.get(id=flat.id)
             user.save()
             return HttpResponseRedirect('/app/home/')
@@ -96,23 +96,33 @@ def joinflat(request):
 
 
 def home(request):
-    user = User.objects.get(id=request.session['user_id'])
-    flat = user.allocation
-    return render(request, '../SharedDoors-templates/APP/home.html', {'title': 'Home', 'user_name': user.name, 'flat_name': flat.name})
+    return render(request, '../SharedDoors-templates/APP/home.html', {'title': 'Home',
+                                                                      'user_name': get_session_user(request).name,
+                                                                      'flat_name': get_session_flat(request).name})
 
 
 def score_monthly(request):
-    session_user = User.objects.get(id=request.session['user_id'])
-    session_flat = session_user.allocation
-    user_list = User.objects.filter(allocation=Flat.objects.get(id=session_flat.id))
-    return render(request, '../SharedDoors-templates/APP/scores.html', {'title': 'Score', 'user_list': user_list, 'monthly': True, 'type': 'Monthly'})
+    user_list = get_all_flatmates(request)
+    return render(request, '../SharedDoors-templates/APP/scores.html', {'title': 'Score',
+                                                                        'user_list': user_list,
+                                                                        'monthly': True,
+                                                                        'type': 'Monthly'})
 
 
 def score_total(request):
-    session_user = User.objects.get(id=request.session['user_id'])
-    session_flat = session_user.allocation
-    user_list = User.objects.filter(allocation=Flat.objects.get(id=session_flat.id))
-    return render(request, '../SharedDoors-templates/APP/scores.html', {'title': 'Total Score', 'user_list': user_list, 'type': 'Total'})
+    user_list = get_all_flatmates(request)
+    return render(request, '../SharedDoors-templates/APP/scores.html', {'title': 'Total Score',
+                                                                        'user_list': user_list,
+                                                                        'monthly': False,
+                                                                        'type': 'Total'})
+
+
+def calendar(request):
+    events = get_all_events(request)
+    return render(request, '../SharedDoors-templates/APP/calendar.html', {
+        'title': 'Calendar',
+        'events': events
+    })
 
 
 def randomize_key():

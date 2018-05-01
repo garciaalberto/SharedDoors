@@ -22,6 +22,7 @@ class User(models.Model):
 
 
 class Event(models.Model):
+    is_completed = models.BooleanField(default=False)
     day = models.DateField()
     name = models.CharField(max_length=255)
     price = models.IntegerField(null=True)

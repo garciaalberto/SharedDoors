@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Doors - {{ title }}</title>
+</head>
+<body>
+<h1> Events: </h1><br>
+<ul>
+    {% for event in events %}
+    <li>{{ event.day }} : {{ event.name }} </li>
+        {% if not event.is_completed %}
+            <input type="button" value="Complete">
+        {% endif %}
+    {% endfor %}
+</ul>
+</body>
+</html>

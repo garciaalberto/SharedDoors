@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .crud import *
 import random
 import string
+from django import template
 
 
 def index(request):
@@ -118,6 +119,22 @@ def score_total(request):
 
 
 def calendar(request):
+    events = get_all_events(request)
+    return render(request, '../SharedDoors-templates/APP/calendar.html', {
+        'title': 'Calendar',
+        'events': events
+    })
+
+
+def complete(request, event_id):
+    event = Event.objects.get(pk=event_id)
+    event.is_completed = True
+    users = event.users.all()
+    for user in users:
+        user.points_monthly += 100
+        user.points_total += 100
+        user.save()
+    event.save()
     events = get_all_events(request)
     return render(request, '../SharedDoors-templates/APP/calendar.html', {
         'title': 'Calendar',

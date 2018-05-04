@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.urls import include, path
 from . import views
 
 urlpatterns = [
@@ -8,13 +9,14 @@ urlpatterns = [
     url(r'^register/validation/', views.validation_register, name='validation_register'),
     url(r'^login/validation/', views.validation_login, name='validation_login'),
     url(r'^flat/', views.flat, name='flat'),
-    url(r'^flat-create', views.createflat, name='createflat'),
-    url(r'^flat-create/validation', views.validation_createflat, name='validation_createflat'),
+    url(r'^flat-create/', views.createflat, name='createflat'),
+    url(r'^flat-create/validation/', views.validation_createflat, name='validation_createflat'),
     url(r'^flat-join', views.joinflat, name='joinflat'),
-    url(r'^flat-join/validation', views.validation_joinflat, name='validation_joinflat'),
+    url(r'^flat-join/validation/', views.validation_joinflat, name='validation_joinflat'),
     url(r'^home/', views.home, name='home'),
-    url(r'^score_monthly', views.score_monthly, name='score_monthly'),
-    url(r'^score_total', views.score_total, name='score_total'),
-    url(r'^calendar', views.calendar, name='calendar')
+    url(r'^score_monthly/', views.score_monthly, name='score_monthly'),
+    url(r'^score_total/', views.score_total, name='score_total'),
+    url(r'^calendar/', views.calendar, name='calendar'),
+    path('complete/<int:event_id>/', views.complete, name='complete')
 ]
 

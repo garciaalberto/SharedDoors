@@ -8,9 +8,9 @@
 <h1> Events: </h1><br>
 <ul>
     {% for event in events %}
-    <li>{{ event.day }} : {{ event.name }} </li>
+        <li>{{ event.day }} : {{ event.name }} </li>
         {% if not event.is_completed %}
-            <input type="button" value="Complete">
+            <a  href="{% url 'complete' event.id %}"> Complete task </a>
         {% endif %}
     {% endfor %}
 </ul>

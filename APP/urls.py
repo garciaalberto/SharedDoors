@@ -17,6 +17,9 @@ urlpatterns = [
     url(r'^score_monthly/', views.score_monthly, name='score_monthly'),
     url(r'^score_total/', views.score_total, name='score_total'),
     url(r'^calendar/', views.calendar, name='calendar'),
-    path('complete/<int:event_id>/', views.complete, name='complete')
+    path('complete/<int:event_id>/', views.complete, name='complete'),
+    url(r'^create-event', views.create_event, name='create_event'),
+    url(r'^create-event/validation', views.validation_event, name='validation_event')
+
 ]
 

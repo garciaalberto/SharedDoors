@@ -7,6 +7,14 @@ def create_user(name, mail, password, total_points=0, monthly_points=0, allocati
     return new_user
 
 
+def create_new_event(request, name, day, price, type):
+    new_event = Event(name=name, day=day, price=price, type=type[0], allocation=get_session_flat(request))
+    new_event.save()
+    new_event.users.add(get_session_user(request))
+    new_event.save()
+    return new_event
+
+
 def get_user(mail):
     return User.objects.get(mail=mail)
 

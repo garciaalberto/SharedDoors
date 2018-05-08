@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from .models import *
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from .crud import *
 import random
 import string
-from django import template
 
 
 def index(request):
@@ -58,8 +57,12 @@ def validation_joinflat(request):
     return None
 
 
+def validation_event(request):
+    return None
+
+
 def flat(request):
-    user =  get_session_user(request)
+    user = get_session_user(request)
     return render(request, '../SharedDoors-templates/APP/flat.html', {
         'title': 'Have flat?',
         'user_name': user.name
@@ -120,9 +123,11 @@ def score_total(request):
 
 def calendar(request):
     events = get_all_events(request)
+    users = get_all_flatmates(request)
     return render(request, '../SharedDoors-templates/APP/calendar.html', {
         'title': 'Calendar',
-        'events': events
+        'events': events,
+        'users': users
     })
 
 
@@ -135,10 +140,24 @@ def complete(request, event_id):
         user.points_total += 100
         user.save()
     event.save()
-    events = get_all_events(request)
-    return render(request, '../SharedDoors-templates/APP/calendar.html', {
-        'title': 'Calendar',
-        'events': events
+    return HttpResponseRedirect('/app/calendar/')
+
+
+def create_event(request):
+    event_name = request.POST.get('name', '')
+    event_day = request.POST.get('day', '')
+    event_price = request.POST.get('price', '')
+    event_type = request.POST.get('type', '')
+    try:
+        if event_name != '':
+            Event.objects.get(name=event_name)
+    except(KeyError, Event.DoesNotExist):
+        create_new_event(request, event_name, event_day, event_price, event_type)
+        return HttpResponseRedirect('/app/calendar/')
+    users_flat = get_all_flatmates(request)
+    return render(request, '../SharedDoors-templates/APP/createevent.html', {
+        'title': 'Create a new event',
+        'users_flat': users_flat
     })
 
 

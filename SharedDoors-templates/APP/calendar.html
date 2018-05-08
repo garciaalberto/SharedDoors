@@ -8,11 +8,22 @@
 <h1> Events: </h1><br>
 <ul>
     {% for event in events %}
-        <li>{{ event.day }} : {{ event.name }} </li>
+        <li><h4>{{ event.day }} : {{ event.name }} </h4></li>
+        {% for user in users %}
+            {% if user not in event.users.all %}
+                <a href="#"><p>Add {{ user.name }} to the task!</p></a>
+            {% else %}
+                <a href="#"><p>Remove {{ user.name }} from the task</p></a>
+            {% endif %}
+        {% endfor %}
         {% if not event.is_completed %}
             <a  href="{% url 'complete' event.id %}"> Complete task </a>
+        {% else %}
+            <p>Task completed!</p>
         {% endif %}
     {% endfor %}
 </ul>
+<a href="{% url 'create_event' %}">Create event</a>
 </body>
+
 </html>

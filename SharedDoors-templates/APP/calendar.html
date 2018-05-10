@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Shared Doors - {{ title }}</title>
+    {% load static %}
+    <link rel='stylesheet' href='{% static "js/fullcalendar/fullcalendar.css" %}' />
+    <script src='{% static "js/lib/jquery.min.js" %}'></script>
+    <script src='{% static "js/lib/moment.min.js" %}'></script>
+    <script src='{% static "js/fullcalendar/fullcalendar.js" %}'></script>
+    <script>
+          $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                defaultDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
+                events: [
+                    {% for event in events %}
+                    {
+                      title: 'Business Lunch',
+                      start: '2018-03-03',
+                      constraint: 'businessHours'
+                    }
+                    {% endfor %}
+                ]
+            });
+          });
+    </script>
 </head>
 <body>
-<h1> Events: </h1><br>
+<div id="calendar">
+
+</div>
+<!--
 <ul>
     {% for event in events %}
         <li><h4>{{ event.day }} : {{ event.name }} </h4></li>
@@ -24,6 +48,7 @@
     {% endfor %}
 </ul>
 <a href="{% url 'create_event' %}">Create event</a>
+-->
 </body>
 
 </html>

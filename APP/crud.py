@@ -15,8 +15,12 @@ def create_new_event(request, name, day, price, type):
     return new_event
 
 
-def get_user(mail):
-    return User.objects.get(mail=mail)
+def get_user_by_id(user_id):
+    return User.objects.get(id=user_id)
+
+
+def get_user_by_mail(user_mail):
+    return User.objects.get(mail=user_mail)
 
 
 def get_session_user(request):
@@ -34,3 +38,18 @@ def get_all_flatmates(request):
 def get_all_events(request):
     return Event.objects.filter(users=get_session_user(request))
 
+
+def get_event_by_id(event_id):
+    return Event.objects.get(id=event_id)
+
+
+def get_event_by_name(event_name):
+    return Event.objects.get(name=event_name)
+
+
+def get_flat_by_id(flat_id):
+    return Flat.objects.get(id=flat_id)
+
+
+def get_flat_by_key(key):
+    return Flat.objects.get(key=key)

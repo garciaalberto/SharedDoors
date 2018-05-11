@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Doors - {{ title }}</title>
+</head>
+<body>
+    <h1> {{ title }} </h1>
+    {% if event.is_completed %}
+        <h2>Task completed!</h2>
+    {% else %}
+        <h2><a href="{% url 'complete' event.id %}">Complete task</a></h2>
+    {% endif %}
+    <h3>{{ event.name }} - {{ event.day }}</h3>
+    {% if event.type == "P" %}
+        <h4>Price: {{ event.price }} </h4>
+    {% endif %}
+    <h5>Participants: </h5>
+    <ul>
+    {% for user in users %}
+        {% if user in event.users.all %}
+            <li><h6> {{ user.name }} <a href="{% url 'delete_participant' event.id user.id %}"> Delete participant </a></h6></li>
+        {% else %}
+            <li><h6> <a href="{% url 'add_participant' event.id user.id %}"> Add {{ user.name }}</a></h6></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <h5><a href="{% url 'delete_event' event.id %}">Delete event</a></h5>
+
+</body>
+</html>

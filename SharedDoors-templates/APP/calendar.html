@@ -12,13 +12,17 @@
           $(document).ready(function() {
             $('#calendar').fullCalendar({
                 defaultDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
+                eventClick: function(id){
+                    window.location.href = id.link;
+                },
                 events: [
                     {% for event in events %}
                     {
-                      title: 'Business Lunch',
-                      start: '2018-03-03',
-                      constraint: 'businessHours'
-                    }
+                      id:    '{{ event.id }}',
+                      title: '{{ event.name }}',
+                      start: '{{ event.day }}',
+                      link:  '{% url 'display_event' event.id %}'
+                    },
                     {% endfor %}
                 ]
             });
@@ -27,28 +31,7 @@
 </head>
 <body>
 <div id="calendar">
-
 </div>
-<!--
-<ul>
-    {% for event in events %}
-        <li><h4>{{ event.day }} : {{ event.name }} </h4></li>
-        {% for user in users %}
-            {% if user not in event.users.all %}
-                <a href="#"><p>Add {{ user.name }} to the task!</p></a>
-            {% else %}
-                <a href="#"><p>Remove {{ user.name }} from the task</p></a>
-            {% endif %}
-        {% endfor %}
-        {% if not event.is_completed %}
-            <a  href="{% url 'complete' event.id %}"> Complete task </a>
-        {% else %}
-            <p>Task completed!</p>
-        {% endif %}
-    {% endfor %}
-</ul>
 <a href="{% url 'create_event' %}">Create event</a>
--->
 </body>
-
 </html>

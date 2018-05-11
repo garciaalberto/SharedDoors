@@ -19,7 +19,12 @@ urlpatterns = [
     url(r'^calendar/', views.calendar, name='calendar'),
     path('complete/<int:event_id>/', views.complete, name='complete'),
     url(r'^create-event', views.create_event, name='create_event'),
-    url(r'^create-event/validation', views.validation_event, name='validation_event')
-
+    url(r'^create-event/validation', views.validation_event, name='validation_event'),
+    path('display_event/<int:event_id>', views.display_event, name='display_event'),
+    path('delete_event/<int:event_id>', views.delete_event, name='delete_event'),
+    path('add_participant/<int:event_id>/<int:user_id>', views.add_participant, name='add_participant'),
+    path('delete_participant/<int:event_id>/<int:user_id>', views.delete_participant, name='delete_participant'),
+    url(r'^leave-flat/', views.leave_flat, name='leave_flat'),
+    url(r'^delete-account/', views.delete_account, name='delete_account')
 ]
 

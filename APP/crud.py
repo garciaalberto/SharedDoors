@@ -53,3 +53,19 @@ def get_flat_by_id(flat_id):
 
 def get_flat_by_key(key):
     return Flat.objects.get(key=key)
+
+
+def delete_seesion_user(request):
+    user = get_session_user(request)
+    user.delete()
+
+
+def leave_flat_session_user(request):
+    user = get_session_user(request)
+    user.allocation = None
+    user.save()
+
+
+def delete_event(event_id):
+    event = get_event_by_id(event_id)
+    event.delete()

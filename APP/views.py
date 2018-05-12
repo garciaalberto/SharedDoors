@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from .crud import *
 import random
 import string
+import clipboard
 
 
 def index(request):
@@ -159,7 +160,7 @@ def create_event(request):
     except(KeyError, Event.DoesNotExist):
         create_new_event(request, event_name, event_day, event_price, event_type)
         return HttpResponseRedirect('/app/calendar/')
-    return render(request, '../SharedDoors-templates/APP/createevent.html', { 'title': 'Create a new event' })
+    return render(request, '../SharedDoors-templates/APP/createevent.html', {'title': 'Create a new event'})
 
 
 def display_event(request, event_id):
@@ -173,8 +174,7 @@ def display_event(request, event_id):
 
 
 def delete_event(request, event_id):
-    event = get_event_by_id(event_id)
-    event.delete()
+    delete_event(event_id)
     return HttpResponseRedirect('/app/calendar/')
 
 
@@ -205,16 +205,19 @@ def add_participant(request, event_id, user_id):
 
 
 def delete_account(request):
-    user = get_session_user(request)
-    user.delete()
+    delete_seesion_user(request)
     return HttpResponseRedirect('/app/')
 
 
 def leave_flat(request):
-    user = get_session_user(request)
-    user.allocation = None
-    user.save()
+    leave_flat_session_user(request)
     return HttpResponseRedirect('/app/flat/')
+
+
+def get_key(request):
+    flat = get_session_flat(request)
+    clipboard.copy(flat.key)
+    return HttpResponseRedirect('/app/home/')
 
 
 def randomize_key():

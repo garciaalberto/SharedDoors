@@ -6,7 +6,8 @@
 </head>
 <body>
 <p> Registered as: {{ user.name }}</p>
-<h5> Current flat: {{ flat.name }}          <a href="{% url 'leave_flat' %}">Leave flat</a></h5>
+<h5> Current flat: {{ flat.name }} <a href="{% url 'get_key' %}">Copy key to clipboard</a>
+    <br><a href="{% url 'leave_flat' %}">Leave flat</a></h5>
 <ul>
     <li><a href="{% url 'calendar' %}">Calendar</a> </li>
     <li><a href="{% url 'score_monthly' %}">Scores</a> </li>

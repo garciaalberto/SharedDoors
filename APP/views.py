@@ -169,7 +169,7 @@ def display_event(request, event_id):
     return render(request, '../SharedDoors-templates/APP/displayevent.html', {
                                                                               'title': event.name,
                                                                               'event': event,
-                                                                              'users': users
+                                                                              'users': users,
                                                                               })
 
 

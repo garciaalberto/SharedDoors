@@ -6,15 +6,31 @@
 </head>
 <body>
     <h1> {{ title }} </h1>
-    {% if event.is_completed %}
+    {% if event.type == 'B' %}
+        <h2>Don't forget to wish a happy birthday!</h2>
+    {% elif event.type == 'M' %}
+        <h2>Eat healthy!</h2>
+    {% elif event.is_completed and not event.type == 'P' %}
         <h2>Task completed!</h2>
-    {% else %}
+    {% elif not event.is_completed and not event.type == 'P' %}
         <h2><a href="{% url 'complete' event.id %}">Complete task</a></h2>
+    {% elif event.is_completed and event.type == 'P' %}
+        <h2>You have already paid!</h2>
+    {% elif not event.is_completed and event.type == 'P' %}
+        <h2>Pay now via Paypal!</h2>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="RTJXU8YN5NC6S">
+            <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
+            <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+        </form>
     {% endif %}
     <h3>{{ event.name }} - {{ event.day }}</h3>
     {% if event.type == "P" %}
-        <h4>Price: {{ event.price }} </h4>
+        <h4>Total price: {{ event.price }} $ </h4>
+        <h4>You have to pay: {% widthratio event.price event.users.count 1 %} $ </h4>
     {% endif %}
+    {% if not event.is_completed %}
     <h5>Participants: </h5>
     <ul>
     {% for user in users %}
@@ -25,6 +41,7 @@
         {% endif %}
     {% endfor %}
     </ul>
+    {% endif %}
     <h5><a href="{% url 'delete_event' event.id %}">Delete event</a></h5>
 
 </body>

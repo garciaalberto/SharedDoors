@@ -5,17 +5,7 @@
     <title>Shared Doors - {{ title }}</title>
     {% load static %}
     <script src='{% static "js/lib/jquery.min.js" %}'></script>
-    <script>
-        function displayPrice(){
-            type = $('[name="type"]').val();
-            if (type === 'Payment') {
-                $('#payment_price').css('display', 'inline-block');
-            }
-            else {
-                $('#payment_price').css('display', 'none');
-            }
-        }
-    </script>
+    <script src='{% static "js/calendar.js" %}'></script>
 </head>
 <body>
     <h1> Create event </h1><br>

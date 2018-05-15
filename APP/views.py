@@ -4,7 +4,7 @@ from .crud import *
 import random
 import string
 import clipboard
-
+import datetime
 
 def index(request):
     return render(request, '../SharedDoors-templates/APP/index.html', {'title': 'Welcome to Shared Doors'})
@@ -134,6 +134,7 @@ def calendar(request):
     return render(request, '../SharedDoors-templates/APP/calendar.html', {
                                                                           'title': 'Calendar',
                                                                           'events': events,
+                                                                          'today': datetime.datetime.today().date()
                                                                           })
 
 

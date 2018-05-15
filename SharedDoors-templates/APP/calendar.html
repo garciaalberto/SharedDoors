@@ -8,6 +8,8 @@
     <script src='{% static "js/lib/jquery.min.js" %}'></script>
     <script src='{% static "js/lib/moment.min.js" %}'></script>
     <script src='{% static "js/fullcalendar/fullcalendar.js" %}'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
           $(document).ready(function() {
             $('#calendar').fullCalendar({
@@ -71,8 +73,42 @@
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'home' %}">Shared Doors</a>
+      <div class="nav-item dropdown" style="margin-right: 8%">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'index' %}">Log out</a>
+          <a class="dropdown-item" href="{% url 'leave_flat' %}">Leave flat</a>
+          <a class="dropdown-item" href="{% url 'delete_account' %}">Delete account</a>
+        </div>
+    </div>
+</nav>
+<div style="text-align: center; margin: 4%">
+    <p><a href="{% url 'home' %}">Home</a> > Calendar</p>
+</div>
+<div style="margin: 4%;" class="row">
+<div class="col-md-6">
+<button onclick="location.href='{% url 'home' %}'" type="button" class="btn btn-secondary float-left"><h1>Go back</h1></button>
+</div>
+<div class="col-md-6">
+<button onclick="location.href='{% url 'create_event' %}'" type="button" class="btn btn-primary float-right"><h1>Create event</h1></button>
+</div>
+</div>
 <div id="calendar">
 </div>
-<a href="{% url 'create_event' %}">Create event</a>
+<div style="text-align: center; margin: 6%;">
+<h1 class="alert alert-primary" > Today events </h1>
+<hr>
+{% for event in events %}
+    {% if event.day == today %}
+        <div onclick="location.href='{% url 'display_event' event.id %}';">
+        <h1> {{ event.name }} </h1>
+        </div>
+    {% endif %}
+{% endfor %}
+</div>
 </body>
 </html>

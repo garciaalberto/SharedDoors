@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Shared Doors - {{ title }}</title>
-</head>
-<body>
+{% extends "APP/base.html" %}
+
+{% block content %}
 <h1> Log in </h1><br>
     <form action="{% url 'validation_login' %}" method="post">
         {% csrf_token %}
@@ -16,5 +12,4 @@
         <br>
         <input type="submit" value="Log in now">
     </form>
-</body>
-</html>
+{% endblock %}

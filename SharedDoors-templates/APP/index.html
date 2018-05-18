@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Shared Doors - {{ title }}</title>
-</head>
-<body>
+{% extends "APP/base.html" %}
+
+{% block content %}
 <h1> Welcome to Shared Doors </h1><br>
 <ul>
     <li><a href="{% url 'login' %}">Log in</a> </li>
     <li><a href="{% url 'register' %}">Register</a> </li>
 </ul>
-</body>
-</html>
+{% endblock %}

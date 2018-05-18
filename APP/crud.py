@@ -62,6 +62,10 @@ def delete_seesion_user(request):
 
 def leave_flat_session_user(request):
     user = get_session_user(request)
+    user.points_total = 0
+    user.points_monthly = 0
+    for event in get_all_events(request):
+        event.users.remove(user)
     user.allocation = None
     user.save()
 

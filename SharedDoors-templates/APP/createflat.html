@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Shared Doors - {{ title }}</title>
-</head>
-<body>
+{% extends "APP/base.html" %}
+
+{% block content %}
 <h1> Create flat </h1><br>
 <ul>
 <form action="{% url 'validation_createflat' %}" method="post">
@@ -15,5 +11,4 @@
         <input type="submit" value="Create flat now">
     </form>
 </ul>
-</body>
-</html>
+{% endblock %}

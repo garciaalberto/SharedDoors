@@ -1,7 +1,6 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Shared Doors - {{ title }}</title>
+{% extends "APP/base.html" %}
+
+{% block head %}
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['bar']});
@@ -39,9 +38,10 @@
             chart.draw(data, options);
         };
     </script>
-</head>
-<body>
+{% endblock %}
+{% extends "APP/base.html" %}
+
+{% block content %}
 <div id="chart"></div>
 <p id="link"><a href="{% url 'score_total' %}">Total scores</a> </p>
-</body>
-</html>
+{% endblock %}

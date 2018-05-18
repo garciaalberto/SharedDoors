@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Shared Doors - {{ title }}</title>
-    {% load static %}
-    <script src='{% static "js/lib/jquery.min.js" %}'></script>
-    <script src='{% static "js/common.js" %}'></script>
-</head>
-<body>
+{% extends "APP/base.html" %}
+
+{% block content %}
     <h1> Create event </h1><br>
     <form action="{% url 'validation_event' %}" method="post">
         {% csrf_token %}
@@ -34,5 +27,4 @@
         <br>
         <button type="submit"> Create event </button>
     </form>
-</body>
-</html>
+{% endblock %}

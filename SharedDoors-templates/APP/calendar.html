@@ -1,107 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Shared Doors - {{ title }}</title>
-    {% load static %}
-    <link rel="shortcut icon" href="{% static "img/logo.gif" %}" />
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' />
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src='{% static "js/common.js" %}'></script>
-    <script>
-          $(document).ready(function() {
-            $('#calendar').fullCalendar({
-                eventTextColor: 'white',
-                displayEventTime: false,
-                navLinks: true,
-                eventLimit: true,
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month'
-                },
-                defaultDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
-                eventClick: function(id){
-                    window.location.href = id.link;
-                },
-                events: [
-                    {% for event in events %}
-                    {
-                      id:    '{{ event.id }}',
-                      title: '{{ event.name }}',
-                      start: '{{ event.day }}',
-                      link:  '{% url 'display_event' event.id %}',
-                      color: changeColor('{{ event.type }}')
-                    },
-                    {% endfor %}
-                ]
-            });
-          });
-          function changeColor(type)
-          {
-              switch (type){
-                  case 'M':
-                      return 'green';
-                  case 'T':
-                      return 'orange';
-                  case 'P':
-                      return 'blue';
-                  case 'B':
-                      return 'purple';
-                  default:
-                      return 'white';
-              }
-          }
-    </script>
+{% extends "APP/base.html" %}
+{% block head %}
     <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-  }
-
-  #top select {
-    font: inherit;
-  }
-
-  #calendar {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 10px;
-    font-size: 25px;
-  }
+    #calendar {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 10px;
+        font-size: 25px;
+    }
     </style>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size: 150%">
-    <div><a href="{% url 'home' %}"><img src="{% static "img/logo.gif" %}"></a>
-  <a class="navbar-brand" href="{% url 'home' %}">Shared Doors</a>
-    </div>
-    <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Flat
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2" style="font-size: 120%">
-          <div class="dropdown-item" onclick="textToClipboard('{{ flat_key }}')" >
-              <p>Copy key to clipboard</p>
-          </div>
-        </div>
-    </div>
-      <div class="nav-item dropdown navbar-right" style="margin-right: 11%">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          User
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="font-size: 120%">
-          <a class="dropdown-item" href="{% url 'index' %}">Log out</a>
-          <a class="dropdown-item" href="{% url 'leave_flat' %}">Leave flat</a>
-          <a class="dropdown-item" href="{% url 'delete_account' %}">Delete account</a>
-        </div>
-    </div>
-</nav>
+    <script>
+    $(document).ready(function() {
+        $('#calendar').fullCalendar({
+            eventTextColor: 'white',
+            displayEventTime: false,
+            navLinks: true,
+            eventLimit: true,
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month'
+            },
+            defaultDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
+            eventClick: function(id){
+                window.location.href = id.link;
+            },
+            events: [
+                {% for event in events %}
+                {
+                  id:    '{{ event.id }}',
+                  title: '{{ event.name }}',
+                  start: '{{ event.day }}',
+                  link:  '{% url 'display_event' event.id %}',
+                  color: changeColor('{{ event.type }}')
+                },
+                {% endfor %}
+            ]
+        });
+    });
+    function changeColor(type) {
+    switch (type){
+        case 'M':
+            return 'green';
+        case 'T':
+            return 'orange';
+        case 'P':
+            return 'blue';
+        case 'B':
+            return 'purple';
+        default:
+            return 'white';
+        }
+    }
+    </script>
+{% endblock %}
+{% block content %}
 <div style="text-align: center; margin: 4%">
     <h5><a href="{% url 'home' %}">Home</a> > Calendar</h5>
 </div>
@@ -127,5 +79,4 @@
     {% endif %}
 {% endfor %}
 </div>
-</body>
-</html>
+{% endblock %}

@@ -130,11 +130,12 @@ def score_total(request):
 
 
 def calendar(request):
+    events = get_all_events(request)
+    current_day = datetime.datetime.today().date()
     return render(request, '../SharedDoors-templates/APP/calendar.html', {
                                                                           'title': 'Calendar',
-                                                                          'events': get_all_events(request),
-                                                                          'today': datetime.datetime.today().date(),
-                                                                          'flat_key': get_session_flat(request).key
+                                                                          'events': events,
+                                                                          'today': current_day
                                                                           })
 
 

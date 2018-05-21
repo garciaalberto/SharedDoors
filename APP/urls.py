@@ -28,4 +28,3 @@ urlpatterns = [
     url(r'^delete-account/', views.delete_account, name='delete_account'),
     url(r'^get-key/', views.get_key, name='get_key')
 ]
-

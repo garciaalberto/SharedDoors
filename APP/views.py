@@ -176,7 +176,7 @@ def display_event(request, event_id):
 
 
 def delete_event(request, event_id):
-    delete_event(event_id)
+    delete_event_by_id(event_id)
     return HttpResponseRedirect('/app/calendar/')
 
 

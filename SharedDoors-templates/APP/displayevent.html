@@ -1,19 +1,30 @@
 {% extends "APP/base.html" %}
 
 {% block content %}
-    <h1> {{ title }} </h1>
+    <div style="text-align: center">
+    <h1 style="margin: 5%" class="display-2">{{ title }}</h1>
+    <h2>{{ event.day }}</h2>
+    <div style="margin: 5%" class="alert-secondary">
+    <h5><a href="{% url 'home' %}">Home</a> > <a href="{% url 'calendar' %}"> Calendar </a> > {{ title }}</h5>
+    </div>
+    <div class="alert-primary">
     {% if event.type == 'B' %}
-        <h2>Don't forget to wish a happy birthday!</h2>
+        <h1>Don't forget to wish a happy birthday!</h1>
     {% elif event.type == 'M' %}
-        <h2>Eat healthy!</h2>
-    {% elif event.is_completed and not event.type == 'P' %}
-        <h2>Task completed!</h2>
-    {% elif not event.is_completed and not event.type == 'P' %}
-        <h2><a href="{% url 'complete' event.id %}">Complete task</a></h2>
+        <h1>Eat healthy!</h1>
+    {% elif event.is_completed and event.type == 'T' %}
+        <h1>Task completed!</h1>
+    {% elif not event.is_completed and event.type == 'T' %}
+        <h1><a href="{% url 'complete' event.id %}">Complete task</a></h1>
+        <div style="margin: 2%;">
+            <button onclick="location.href='{% url 'complete' event.id %}';" class="btn btn-success">
+            <h3>Complete task</h3>
+            </button>
+            </div>
     {% elif event.is_completed and event.type == 'P' %}
-        <h2>You have already paid!</h2>
+        <h1>You have already paid!</h1>
     {% elif not event.is_completed and event.type == 'P' %}
-        <h2>Pay now via Paypal!</h2>
+        <h1>Pay now via Paypal!</h1>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="hosted_button_id" value="RTJXU8YN5NC6S">
@@ -21,22 +32,36 @@
             <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
         </form>
     {% endif %}
-    <h3>{{ event.name }} - {{ event.day }}</h3>
     {% if event.type == "P" %}
-        <h4>Total price: {{ event.price }} $ </h4>
-        <h4>You have to pay: {% widthratio event.price event.users.count 1 %} $ </h4>
+        <h2>Total price: {{ event.price }} $ </h2>
+        <h2>You have to pay: {% widthratio event.price event.users.count 1 %} $ </h2>
     {% endif %}
     {% if not event.is_completed %}
-    <h5>Participants: </h5>
-    <ul>
+    <h2>Participants: </h2>
     {% for user in users %}
         {% if user in event.users.all %}
-            <li><h6> {{ user.name }} <a href="{% url 'delete_participant' event.id user.id %}"> Delete participant </a></h6></li>
+            <div style="margin: 2%;">
+            <h3 class="float-center"> {{ user.name }} </h3> <button onclick="location.href='{% url 'delete_participant' event.id user.id %}';" class="btn btn-danger">
+            <h3>Delete participant</h3>
+            </button>
+            <br>
+            </div>
         {% else %}
-            <li><h6> <a href="{% url 'add_participant' event.id user.id %}"> Add {{ user.name }}</a></h6></li>
+            <div style="margin: 2%;">
+            <button onclick="location.href='{% url 'add_participant' event.id user.id %}';" class="btn btn-success">
+            <h3>Add {{ user.name }}</h3>
+            </button>
+            </div>
         {% endif %}
     {% endfor %}
-    </ul>
+    {% else %}
+        {% for user in users %}
+            <h3 class="float-center" style="margin: 5%"> {{ user.name }} got 100 points from {{ event.name }} </h3>
+        {% endfor %}
     {% endif %}
-    <h5><a href="{% url 'delete_event' event.id %}">Delete event</a></h5>
+    </div>
+    </div>
+    <button style="margin: 8%" onclick="location.href='{% url 'delete_event' event.id %}';" class="btn btn-danger">
+    <h1>Delete event</h1>
+    </button>
 {% endblock %}

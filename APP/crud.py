@@ -70,6 +70,6 @@ def leave_flat_session_user(request):
     user.save()
 
 
-def delete_event(event_id):
+def delete_event_by_id(event_id):
     event = get_event_by_id(event_id)
     event.delete()

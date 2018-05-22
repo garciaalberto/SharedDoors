@@ -1,10 +1,13 @@
 {% extends "APP/base.html" %}
 
 {% block content %}
-<p>Welcome {{ user_name }}!</p>
-<h1> Have a flat? </h1><br>
-<ul>
-    <li><a href="{% url 'createflat' %}">Create a new one</a> </li>
-    <li><a href="{% url 'joinflat' %}">Join an existing flat</a> </li>
-</ul>
+    <div style="text-align: center">
+    <h1 style="margin: 10%" class="display-2">Have a flat?</h1>
+        <button style="margin: 5%" onclick="location.href='{% url 'createflat' %}';" class="btn btn-primary">
+            <h1>Create a new one</h1>
+            </button><br>
+    <button style="margin: 5%" onclick="location.href='{% url 'joinflat' %}';" class="btn btn-primary">
+            <h1>Join an existing flat</h1>
+            </button>
+    </div>
 {% endblock %}

@@ -38,6 +38,15 @@
     {% endif %}
     {% if not event.is_completed %}
     <h2>Participants: </h2>
+        {% for user in users %}
+        {% if user not in event.users.all %}
+            <div style="margin: 2%;">
+            <button onclick="location.href='{% url 'add_participant' event.id user.id %}';" class="btn btn-success">
+            <h3>Add {{ user.name }}</h3>
+            </button>
+            </div>
+        {% endif %}
+    {% endfor %}
     {% for user in users %}
         {% if user in event.users.all %}
             <div style="margin: 2%;">
@@ -46,14 +55,8 @@
             </button>
             <br>
             </div>
-        {% else %}
-            <div style="margin: 2%;">
-            <button onclick="location.href='{% url 'add_participant' event.id user.id %}';" class="btn btn-success">
-            <h3>Add {{ user.name }}</h3>
-            </button>
-            </div>
         {% endif %}
-    {% endfor %}
+            {% endfor %}
     {% else %}
         {% for user in users %}
             <h3 class="float-center" style="margin: 5%"> {{ user.name }} got 100 points from {{ event.name }} </h3>

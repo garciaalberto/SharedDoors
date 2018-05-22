@@ -1,15 +1,17 @@
 {% extends "APP/base.html" %}
 
 {% block content %}
-<h1> Log in </h1><br>
-    <form action="{% url 'validation_login' %}" method="post">
+<h1 style="text-align: center; margin: 5%" class="display-2">Log In</h1><br>
+    <div style="text-align: center">
+    <form action="{% url 'validation_login' %}" method="post" class="alert alert-primary">
         {% csrf_token %}
-        <label for="your_mail">Enter your email: </label><br>
-        <input pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" id="your_mail" type="text" name="mail" value="{{ mail }}"><br>
+        <h2><label for="your_mail">Enter your email: </label></h2><br>
+        <h2><input pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" id="your_mail" type="text" name="mail" value="{{ mail }}"></h2><br>
         <br>
-        <label for="your_pass">Enter your password: </label><br>
-        <input id="your_pass" type="password" name="pass" value="{{ pass }}"><br>
+        <h2><label for="your_pass">Enter your password: </label></h2><br>
+        <h2><input id="your_pass" type="password" name="pass" value="{{ pass }}"></h2><br>
         <br>
-        <input type="submit" value="Log in now">
+        <button class="btn btn-primary" type="submit"> <h2> Log in now </h2> </button>
     </form>
+    </div>
 {% endblock %}

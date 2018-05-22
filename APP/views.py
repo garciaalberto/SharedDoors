@@ -109,23 +109,11 @@ def home(request):
                                                                       })
 
 
-def score_monthly(request):
+def score(request):
     user_list = get_all_flatmates(request)
     return render(request, '../SharedDoors-templates/APP/scores.html', {
                                                                         'title': 'Score',
                                                                         'user_list': user_list,
-                                                                        'monthly': True,
-                                                                        'type': 'Monthly'
-                                                                        })
-
-
-def score_total(request):
-    user_list = get_all_flatmates(request)
-    return render(request, '../SharedDoors-templates/APP/scores.html', {
-                                                                        'title': 'Total Score',
-                                                                        'user_list': user_list,
-                                                                        'monthly': False,
-                                                                        'type': 'Total'
                                                                         })
 
 
@@ -186,6 +174,8 @@ def delete_participant(request, event_id, user_id):
     event.users.remove(user)
     event.save()
     users = get_all_flatmates(request)
+    if user_id == get_session_user(request).id:
+        return HttpResponseRedirect('/app/calendar')
     return render(request, '../SharedDoors-templates/APP/displayevent.html', {
                                                                               'title': event.name,
                                                                               'event': event,

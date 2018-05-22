@@ -3,6 +3,7 @@
 {% block head %}
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+        var TYPE = "Monthly";
         google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(drawStuff);
 
@@ -11,20 +12,20 @@
             var i = 1;
             rawData[0] = ['User', 'Score']
             {% for user in user_list %}
-                {% if monthly %}
-                rawData [i] = ['{{ user.name }}', {{ user.points_monthly }}];
-                {% else %}
-                    document.getElementById("link").style.visibility = "hidden";
-                rawData [i] = ['{{ user.name }}', {{ user.points_total }}];
-                {% endif %}
+                if(TYPE === "Monthly") {
+                    rawData [i] = ['{{ user.name }}', {{ user.points_monthly }}];
+                }
+                if(TYPE === "Total") {
+                    rawData [i] = ['{{ user.name }}', {{ user.points_total }}];
+                }
                 i++;
             {% endfor %}
             var data = new google.visualization.arrayToDataTable(rawData);
             var options = {
-                title: '{{ type }} score',
+                title: '',
                 legend: { position: 'none' },
-                chart: { title: '{{ type }} score',
-                    subtitle: 'Based on the calendar' },
+                chart: { title: '',
+                    subtitle: '' },
                 bars: 'horizontal',
                 axes: {
                     x: {
@@ -34,14 +35,33 @@
                 bar: { groupWidth: "90%" }
             };
 
-            var chart = new google.charts.Bar(document.getElementById('chart'));
-            chart.draw(data, options);
+            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
         };
+        
+        function showMonthly() {
+            TYPE = "Monthly";
+            $( "#monthly" ).disabled = true;
+            $( "#total" ).disabled = false;
+            drawStuff();
+        }
+
+        function showTotal() {
+            TYPE = "Total";
+            $( "#monthly" ).disabled = false;
+            $( "#total" ).disabled = true;
+            drawStuff();
+        }
     </script>
 {% endblock %}
-{% extends "APP/base.html" %}
 
 {% block content %}
-<div id="chart"></div>
-<p id="link"><a href="{% url 'score_total' %}">Total scores</a> </p>
+    <div style="text-align: center">
+    <h1 id="charttag" style="margin: 5%" class="display-2">Scores</h1>
+    <div style="margin: 5%" class="alert-secondary">
+    <h5><a href="{% url 'home' %}">Home</a> > Score </h5>
+    </div>
+<div id="top_x_div"></div>
+    <button style="margin: 5%" id="monthly" onclick="showMonthly()" class="btn btn-primary"><h2>Mensual Score</h2></button><button style="margin: 5%" id="total" onclick="showTotal()" class="btn btn-primary"><h2>Total Score</h2></button>
+</div>
 {% endblock %}

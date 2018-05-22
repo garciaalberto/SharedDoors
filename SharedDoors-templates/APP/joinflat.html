@@ -1,14 +1,14 @@
 {% extends "APP/base.html" %}
 
 {% block content %}
-<h1> Join flat </h1><br>
-<ul>
-<form action="{% url 'validation_joinflat' %}" method="post">
+<div style="text-align: center">
+    <h1 style="margin: 5%" class="display-2">Join flat</h1><br><br>
+<form action="{% url 'validation_joinflat' %}" method="post" class="alert alert-primary">
         {% csrf_token %}
-        <label for="flat_key">Insert the flat key: </label><br>
-        <input id="flat_key" type="text" name="flat_key" value="{{ flat_key }}"><br>
+        <h2><label for="flat_key">Insert the flat key: </label></h2><br>
+        <h2><input id="flat_key" type="text" name="flat_key" value="{{ flat_key }}"></h2><br>
         <br>
-        <input type="submit" value="Join flat now">
+        <button class="btn btn-primary" type="submit"> <h2> Join flat now </h2> </button>
     </form>
-</ul>
+</div>
 {% endblock %}

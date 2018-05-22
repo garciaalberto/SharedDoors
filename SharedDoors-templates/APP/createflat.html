@@ -1,14 +1,14 @@
 {% extends "APP/base.html" %}
 
 {% block content %}
-<h1> Create flat </h1><br>
-<ul>
-<form action="{% url 'validation_createflat' %}" method="post">
+<div style="text-align: center">
+    <h1 style="margin: 5%" class="display-2">Create flat</h1><br>
+<form action="{% url 'validation_createflat' %}" method="post" class="alert alert-primary">
         {% csrf_token %}
-        <label for="flat_name">Choose a name: </label><br>
-        <input id="flat_name" type="text" name="flat_name" value="{{ flat_name }}"><br>
+        <h2><label for="flat_name">Choose a name: </label></h2><br>
+        <h2><input id="flat_name" type="text" name="flat_name" value="{{ flat_name }}"></h2><br>
         <br>
-        <input type="submit" value="Create flat now">
+        <button class="btn btn-primary" type="submit"> <h2> Create flat now </h2> </button>
     </form>
-</ul>
+</div>
 {% endblock %}

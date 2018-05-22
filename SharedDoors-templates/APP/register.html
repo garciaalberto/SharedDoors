@@ -1,21 +1,23 @@
 {% extends "APP/base.html" %}
 
 {% block content %}
-    <h1> Register </h1><br>
-    <form action="{% url 'validation_register' %}" method="post">
+    <div style="text-align: center">
+    <h1 style="margin: 5%" class="display-2">Register</h1><br><br>
+    <form action="{% url 'validation_register' %}" method="post" class="alert alert-primary">
         {% csrf_token %}
-        <label for="name">Name: </label><br>
-        <input id="name" type="text" name="name" value="{{ user_name }}"><br>
+        <h2><label for="name">Name: </label></h2><br>
+        <h2><input id="name" type="text" name="name" value="{{ user_name }}"></h2><br>
         <br>
-        <label for="mail">Email: </label><br>
-        <input pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" id="mail" type="text" name="mail" value="{{ user_mail }}"><br>
+        <h2><label for="mail">Email: </label></h2><br>
+        <h2><input pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" id="mail" type="text" name="mail" value="{{ user_mail }}"></h2><br>
         <br>
-        <label for="pass">Password: </label><br>
-        <input id="pass" type="password" name="pass" value="{{ user_pass }}"><br>
+        <h2><label for="pass">Password: </label></h2><br>
+        <h2><input id="pass" type="password" name="pass" value="{{ user_pass }}"></h2><br>
         <br>
-        <label for="pass2">Password verification: </label><br>
-        <input id="pass2" type="password" name="pass2" value="{{ user_pass2 }}"><br>
+        <h2><label for="pass2">Password verification: </label></h2><br>
+        <h2><input id="pass2" type="password" name="pass2" value="{{ user_pass2 }}"></h2><br>
         <br>
-        <button type="submit"> Register now </button>
+        <button class="btn btn-primary" type="submit"> <h2> Register now </h2> </button>
     </form>
+    </div>
 {% endblock %}

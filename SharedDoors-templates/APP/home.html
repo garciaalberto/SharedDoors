@@ -1,12 +1,19 @@
 {% extends "APP/base.html" %}
 
 {% block content %}
-<p> Registered as: {{ user.name }}</p>
-<h5> Current flat: {{ flat.name }} <a href="{% url 'get_key' %}">Copy key to clipboard</a>
-    <br><a href="{% url 'leave_flat' %}">Leave flat</a></h5>
-<ul>
-    <li><a href="{% url 'calendar' %}">Calendar</a> </li>
-    <li><a href="{% url 'score_monthly' %}">Scores</a> </li>
-</ul>
-<p><a href="{% url 'index' %}">Log Out</a>     <a href="{% url 'delete_account' %}">Delete account</a> </p>
+    <div style="margin: 10%; text-align: center">
+    <h1 id="charttag" style="margin: 5%" class="display-2">Home</h1>
+    <div style="margin: 5%" class="alert-secondary">
+    <h5>Home</h5>
+    </div>
+
+<h2> Welcome home {{ user.name }}</h2>
+    <h2 style="margin: 10%"> You are currently allocated in {{ flat.name }} <a href="{% url 'get_key' %}">Copy flat key to clipboard</a></h2>
+<button style="margin: 5%" onclick="location.href='{% url 'calendar' %}';" class="btn btn-primary">
+            <h1>Calendar</h1>
+            </button><br>
+    <button style="margin: 5%" onclick="location.href='{% url 'score' %}';" class="btn btn-primary">
+            <h1>Scores</h1>
+            </button>
+    </div>
 {% endblock %}

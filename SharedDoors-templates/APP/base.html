@@ -24,18 +24,18 @@
 <body>
     {% if title != "Welcome to Shared Doors" and title != "Log In" and title != "Register" and title != "Have flat?" and title != "Create flat" and title != "Join flat" %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size: 150%">
-        <div><a href="{% url 'home' %}"><img src="{% static "img/logo.gif" %}"></a>
-            <a class="navbar-brand" href="{% url 'home' %}">Shared Doors</a>
+        <div style="vertical-align:middle"><a href="{% url 'home' %}"><img src="{% static "img/logo.gif" %}"></a>
+            <a style="font-size: 160%" class="navbar-brand" href="{% url 'home' %}">Shared Doors</a>
         </div>
         <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Flat</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2" style="font-size: 120%">
+            <a style="font-size: 160%" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Flat</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2" style="font-size: 140%">
                 <a class="dropdown-item" href="{% url 'leave_flat' %}">Leave flat</a>
             </div>
         </div>
         <div class="nav-item dropdown navbar-right" style="margin-right: 11%">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="font-size: 120%">
+            <a style="font-size: 160%" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="font-size: 140%">
                 <a class="dropdown-item" href="{% url 'index' %}">Log out</a>
                 <a class="dropdown-item" href="{% url 'delete_account' %}">Delete account</a>
             </div>

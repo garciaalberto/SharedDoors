@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^create-event', views.create_event, name='create_event'),
     url(r'^create-event/validation', views.validation_event, name='validation_event'),
     path('display_event/<int:event_id>', views.display_event, name='display_event'),
+    path('edit_event/<int:event_id>', views.edit_event, name='edit_event'),
     path('delete_event/<int:event_id>', views.delete_event, name='delete_event'),
     path('add_participant/<int:event_id>/<int:user_id>', views.add_participant, name='add_participant'),
     path('delete_participant/<int:event_id>/<int:user_id>', views.delete_participant, name='delete_participant'),

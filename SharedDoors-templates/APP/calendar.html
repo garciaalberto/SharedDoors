@@ -13,6 +13,7 @@
     <script>
     $(document).ready(function() {
         $('#calendar').fullCalendar({
+            slotDuration:'24:00',
             eventTextColor: 'white',
             displayEventTime: false,
             navLinks: true,
@@ -20,7 +21,7 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month'
+                right: 'month,basicWeek'
             },
             defaultDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
             eventClick: function(id){
@@ -33,7 +34,8 @@
                   title: '{{ event.name }}',
                   start: '{{ event.day }}',
                   link:  '{% url 'display_event' event.id %}',
-                  color: changeColor('{{ event.type }}')
+                  color: changeColor('{{ event.type }}'),
+                  allDay: true
                 },
                 {% endfor %}
             ]
@@ -49,6 +51,8 @@
             return 'blue';
         case 'B':
             return 'purple';
+        case 'R':
+            return '#ff0040';
         default:
             return 'white';
         }

@@ -1,0 +1,26 @@
+{% extends "APP/base.html" %}
+
+{% block content %}
+    <h1 style="text-align: center; margin: 5%" class="display-2">Edit</h1>
+    <div style="text-align: center; margin: 4%">
+     <h5><a href="{% url 'home' %}">Home</a> > <a href="{% url 'calendar' %}"> Calendar </a> > <a href="{% url 'display_event'  event.id %}">{{ event.name }}</a> > Edit</h5>
+    </div>
+    <form class="alert alert-primary" action="{% url 'edit_event' event.id %}" method="post" style="text-align: center; margin: 5%">
+        {% csrf_token %}
+        <label for="name"><h2>Name: </h2></label><br>
+        <h2><input id="name" type="text" name="name" value='{{ event.name }}'></h2><br>
+        <br>
+        <label for="day"><h2>Day: </h2></label><br>
+        <h2><input id="day" type="date" name="day" value="{{ event.day }}"></h2><br>
+        <br>
+        {% if event.type == 'P' %}
+        <label for="price"><h2>Price: </h2></label><br>
+        <h2><input value="{{ event.price }}" id="price" type="number" name="price" step="0.01"></h2>
+        {% endif %}
+        <br>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit"> <h2> Edit event </h2> </button>
+    </form>
+<button style="margin: 5%" onclick="location.href='{% url 'calendar' %}'" type="button" class="btn btn-secondary float-left"><h1>Go back</h1></button>
+{% endblock %}

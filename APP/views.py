@@ -153,6 +153,24 @@ def create_event(request):
     return render(request, '../SharedDoors-templates/APP/createevent.html', {'title': 'Create a new event'})
 
 
+def edit_event(request, event_id):
+    event = get_event_by_id(event_id)
+    event_name = request.POST.get('name', '')
+    event_day = request.POST.get('day', '')
+    event_price = request.POST.get('price', '')
+    if event_name is event.name and event_day is event.day and event.price is event_price or event_name is '' and event_price is '' and event_day is '':
+        return render(request, '../SharedDoors-templates/APP/editevent.html', {
+                                                                              'title': 'Edit',
+                                                                              'event': event
+                                                                              })
+    else:
+        event.name = event_name
+        event.day = event_day
+        event.price = event_price
+        event.save()
+        return HttpResponseRedirect('/app/calendar/')
+
+
 def display_event(request, event_id):
     event = get_event_by_id(event_id)
     users = get_all_flatmates(request)

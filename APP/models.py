@@ -5,8 +5,8 @@ TYPES = (
         ('M', 'Menu'),
         ('T', 'Task'),
         ('P', 'Payment'),
-        ('B', 'Birthday')
-        )
+        ('B', 'Birthday'),
+        ('R', 'Reminder'))
 
 
 class Flat(models.Model):

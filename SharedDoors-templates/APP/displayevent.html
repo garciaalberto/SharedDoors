@@ -10,6 +10,8 @@
     <div class="alert-primary">
     {% if event.type == 'B' %}
         <h1>Don't forget to wish a happy birthday!</h1><br>
+    {% elif event.type == 'R' %}
+        <h1>Don't forget!</h1><br>
     {% elif event.type == 'M' %}
         <h1>Eat healthy!</h1><br>
     {% elif event.is_completed and event.type == 'T' %}

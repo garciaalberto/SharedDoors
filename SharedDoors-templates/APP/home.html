@@ -1,6 +1,49 @@
 {% extends "APP/base.html" %}
 {% block head %}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+#snackbar {
+    font-size: 200%;
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+</style>
     <script>
 function copyToClipboard(text, el) {
   var copyTest = document.queryCommandSupported('copy');
@@ -22,6 +65,9 @@ function copyToClipboard(text, el) {
   } else {
     window.prompt("Copy to clipboard: Ctrl+C or Command+C, Enter", text);
   }
+  var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 $(document).ready(function() {
@@ -51,5 +97,6 @@ $(document).ready(function() {
             <h1>Scores</h1>
             </button>
     </div>
-    <p id="key" style="display: none">{{ flat.key }}</p>
+    <div id="snackbar">Key copied to clipboard!</div>
+
 {% endblock %}

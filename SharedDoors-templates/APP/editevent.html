@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1 style="text-align: center; margin: 5%" class="display-2">Edit</h1>
-    <div style="text-align: center; margin: 4%">
+    <div style="text-align: center; margin: 4%" class="alert-secondary">
      <h5><a href="{% url 'home' %}">Home</a> > <a href="{% url 'calendar' %}"> Calendar </a> > <a href="{% url 'display_event'  event.id %}">{{ event.name }}</a> > Edit</h5>
     </div>
     <form class="alert alert-primary" action="{% url 'edit_event' event.id %}" method="post" style="text-align: center; margin: 5%">

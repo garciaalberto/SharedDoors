@@ -32,13 +32,15 @@ def register(request):
     user_name = request.POST.get('name', '')
     user_mail = request.POST.get('mail', '')
     user_pass = request.POST.get('pass', '')
+    user_pass2 = request.POST.get('pass2', '')
     try:
         if user_mail != '':
             get_user_by_mail(user_mail)
     except(KeyError, User.DoesNotExist):
-        new_user = create_user(user_name, user_mail, user_pass)
-        request.session['user_id'] = new_user.id
-        return HttpResponseRedirect('/app/flat/')
+        if user_pass == user_pass2:
+            new_user = create_user(user_name, user_mail, user_pass)
+            request.session['user_id'] = new_user.id
+            return HttpResponseRedirect('/app/flat/')
     return render(request, '../SharedDoors-templates/APP/register.html', {'title': 'Register'})
 
 

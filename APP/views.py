@@ -228,11 +228,5 @@ def leave_flat(request):
     return HttpResponseRedirect('/app/flat/')
 
 
-def get_key(request):
-    flat = get_session_flat(request)
-    clipboard.copy(flat.key)
-    return HttpResponseRedirect('/app/home/')
-
-
 def randomize_key():
     return ''.join([random.choice(string.ascii_letters + string.digits) for n in range(15)])

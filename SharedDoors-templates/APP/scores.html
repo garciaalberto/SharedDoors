@@ -22,6 +22,19 @@
             {% endfor %}
             var data = new google.visualization.arrayToDataTable(rawData);
             var options = {
+                height: window.innerWidth/2,
+                vAxis : {
+                    textStyle : {
+                        fontSize: 30
+                    }
+
+                },
+                hAxis : {
+                    textStyle : {
+                        fontSize: 30
+                    }
+
+                },
                 title: '',
                 legend: { position: 'none' },
                 chart: { title: '',
@@ -31,8 +44,7 @@
                     x: {
                         0: { side: 'top', label: 'Points'}
                     }
-                },
-                bar: { groupWidth: "90%" }
+                }
             };
 
             var chart = new google.charts.Bar(document.getElementById('top_x_div'));

@@ -2,6 +2,7 @@ from django.test import TestCase
 from .models import *
 import datetime
 
+
 class UserTestCase(TestCase):
     def setUp(self):
         flat = Flat.objects.create(name='testFlat', key='1234')

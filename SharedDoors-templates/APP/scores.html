@@ -25,13 +25,15 @@
                 height: window.innerWidth/2,
                 vAxis : {
                     textStyle : {
-                        fontSize: 30
+                        fontSize: 30,
+                        fontName: 'Sriracha'
                     }
 
                 },
                 hAxis : {
                     textStyle : {
-                        fontSize: 30
+                        fontSize: 30,
+                        fontName: 'Sriracha'
                     }
 
                 },
@@ -50,7 +52,7 @@
             var chart = new google.charts.Bar(document.getElementById('top_x_div'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         };
-        
+
         function showMonthly() {
             TYPE = "Monthly";
             $( "#monthly" ).disabled = true;

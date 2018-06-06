@@ -85,11 +85,11 @@ $(document).ready(function() {
     <h1 id="charttag" style="margin: 5%" class="display-2">Home</h1>
 
 <h2> Hello {{ user.name }}, welcome to {{ flat.name }}!</h2>
-    <h3 style="margin-top: 5%">Flat key: {{ flat.key }}  <button data-copy="{{ flat.key }}" title="Copy to clipboard" class="btn btn-copy btn-default js-copy"><i class="far fa-clipboard"></i></button></h3> <br><br><br>
-    <button style="margin: 5%" onclick="location.href='{% url 'calendar' %}';" class="btn btn-primary">
+    <h2 style="margin-top: 5%">Flat key: {{ flat.key }}  <button data-copy="{{ flat.key }}" title="Copy to clipboard" class="btn btn-copy btn-default js-copy"><i class="far fa-clipboard"></i></button></h3> <br><br><br>
+    <button style="margin: 5%" onclick="location.href='{% url 'calendar' %}';" class="btn btn-primary btn-lg">
             <h1>Calendar</h1>
             </button><br>
-    <button style="margin: 5%" onclick="location.href='{% url 'score' %}';" class="btn btn-primary">
+    <button style="margin: 5%" onclick="location.href='{% url 'score' %}';" class="btn btn-primary btn-lg">
             <h1>Scores</h1>
             </button>
     </div>

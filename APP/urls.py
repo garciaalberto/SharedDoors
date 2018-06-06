@@ -25,6 +25,5 @@ urlpatterns = [
     path('add_participant/<int:event_id>/<int:user_id>', views.add_participant, name='add_participant'),
     path('delete_participant/<int:event_id>/<int:user_id>', views.delete_participant, name='delete_participant'),
     url(r'^leave-flat/', views.leave_flat, name='leave_flat'),
-    url(r'^delete-account/', views.delete_account, name='delete_account'),
-    url(r'^get-key/', views.get_key, name='get_key')
+    url(r'^delete-account/', views.delete_account, name='delete_account')
 ]

@@ -1,17 +1,7 @@
 {% extends "APP/base.html" %}
 {% block head %}
-    <script>
-    function displayPrice(){
-    type = $('[name="type"]').val();
-    if (type === 'Payment') {
-        $('#payment_price').css('display', 'inline-block');
-    }
-    else {
-        $('#payment_price').css('display', 'none');
-        $('#price').val(0);
-    }
-}
-    </script>
+    {% load static %}
+    <script src="{% static 'js/event_price.js' %}"></script>
 {% endblock %}
 {% block content %}
     <h1 style="text-align: center; margin: 5%" class="display-2">Create Event</h1>

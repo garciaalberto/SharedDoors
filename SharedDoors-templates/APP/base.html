@@ -1,45 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <title>Shared Doors - {{ title }}</title>
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Sriracha" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
-    <link rel="shortcut icon" href="https://i.imgur.com/CSVenok.gif" />
+    <link rel="shortcut icon" href="{% static "img/logo.gif" %}" />
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css' />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-size: 13px;
-        }
-
-        #top select {
-            font: inherit;
-        }
-
-        h1, h2, h3, h4, h5, h6, p, a {
-            font-family: 'Sriracha', cursive;
-        }
-
-        .display-2 {
-            font-family: 'Amatic SC', cursive;
-            font-weight: bold;
-        }
-
-        .btn-lg {
-            width: 50%;
-            height: 25%;
-        }
-    </style>
+    <link href="{% static "css/common.css" %}" rel="stylesheet">
     {% block head %}{% endblock %}
 </head>
 <body>
     {% if title != "Welcome to Shared Doors" and title != "Log In" and title != "Register" and title != "Have flat?" and title != "Create flat" and title != "Join flat" %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size: 150%">
-        <div style="vertical-align:middle"><a href="{% url 'home' %}"><img src="https://i.imgur.com/CSVenok.gif"></a>
+        <div style="vertical-align:middle"><a href="{% url 'home' %}"><img src="{% static "img/logo.gif" %}"></a>
             <a style="font-size: 160%" class="navbar-brand" href="{% url 'home' %}">Shared Doors</a>
         </div>
         <div class="nav-item dropdown">

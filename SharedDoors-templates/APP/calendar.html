@@ -1,16 +1,9 @@
 {% extends "APP/base.html" %}
 {% block head %}
+    {% load static %}
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
-    <style>
-    #calendar {
-        font-family: 'Sriracha', cursive;
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 0 10px;
-        font-size: 25px;
-    }
-    </style>
+    <link href="{% static "css/calendar.css" %}" rel="stylesheet">
     <script>
     $(document).ready(function() {
         $('#calendar').fullCalendar({
@@ -42,23 +35,8 @@
             ]
         });
     });
-    function changeColor(type) {
-    switch (type){
-        case 'M':
-            return 'green';
-        case 'T':
-            return 'orange';
-        case 'P':
-            return 'blue';
-        case 'B':
-            return 'purple';
-        case 'R':
-            return '#ff0040';
-        default:
-            return 'white';
-        }
-    }
     </script>
+    <script src="{% static 'js/color.js' %}"></script>
 {% endblock %}
 {% block content %}
     <h1 style="text-align: center; margin: 5%" class="display-2">Calendar</h1>

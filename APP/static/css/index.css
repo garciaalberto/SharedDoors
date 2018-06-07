@@ -1,0 +1,9 @@
+body {
+    background-image: url("/static/img/index_background.jpg");
+    background-color: #ffffff;
+    background-size: auto;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}

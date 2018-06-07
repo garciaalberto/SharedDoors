@@ -1,92 +1,16 @@
 {% extends "APP/base.html" %}
 {% block head %}
+    {% load static %}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <style>
-
-#snackbar {
-    font-size: 200%;
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-}
-
-#snackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-}
-</style>
-    <script>
-function copyToClipboard(text, el) {
-  var copyTest = document.queryCommandSupported('copy');
-  var elOriginalText = el.attr('data-original-title');
-
-  if (copyTest === true) {
-    var copyTextArea = document.createElement("textarea");
-    copyTextArea.value = text;
-    document.body.appendChild(copyTextArea);
-    copyTextArea.select();
-    try {
-      var successful = document.execCommand('copy');
-      var msg = successful ? 'Copied!' : 'Whoops, not copied!';
-    } catch (err) {
-      console.log('Oops, unable to copy');
-    }
-    document.body.removeChild(copyTextArea);
-    el.attr('data-original-title', elOriginalText);
-  } else {
-    window.prompt("Copy to clipboard: Ctrl+C or Command+C, Enter", text);
-  }
-  var x = document.getElementById("snackbar");
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
-
-$(document).ready(function() {
-
-  $('.js-copy').click(function() {
-    var text = $(this).attr('data-copy');
-    var el = $(this);
-    copyToClipboard(text, el);
-  });
-});
-    </script>
+    <link href="{% static "css/snackbar.css" %}" rel="stylesheet">
+    <script src="{% static 'js/clipboard.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div style="margin: 10%; text-align: center">
     <h1 id="charttag" style="margin: 5%" class="display-2">Home</h1>
     <br>
 <h2> Hello {{ user.name }}, welcome to {{ flat.name }}!</h2>
-    <h2 style="margin-top: 5%">Flat key: {{ flat.key }}  <button data-copy="{{ flat.key }}" title="Copy to clipboard" class="btn btn-copy btn-default js-copy"><i class="far fa-clipboard"></i></button></h3> <br><br><br>
+    <h2 style="margin-top: 5%">Flat key: {{ flat.key }}  <button data-copy="{{ flat.key }}" title="Copy to clipboard" class="btn btn-copy btn-default js-copy"><i class="far fa-clipboard"></i></button></h2> <br><br><br>
     <button style="margin: 5%" onclick="location.href='{% url 'calendar' %}';" class="btn btn-primary btn-lg">
             <h1>Calendar</h1>
             </button><br>

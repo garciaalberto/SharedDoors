@@ -2,7 +2,7 @@
 
 **Motivación.**
 
-Mi principal motivación era aprobar poder ofrecer una herramienta a la gente que comparte piso para la fácil gestión de las tareas que este conlleva. Esta inquietud proviene precisamente de estar compartiendo piso y ser alguien un poco olvidadizo.
+Mi principal motivación era ~~aprobar~~ poder ofrecer una herramienta a la gente que comparte piso para la fácil gestión de las tareas que este conlleva. Esta inquietud proviene precisamente de estar compartiendo piso y ser alguien un poco olvidadizo.
 
 **Objetivos.**
 

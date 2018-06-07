@@ -6,7 +6,7 @@
     <form action="{% url 'validation_login' %}" method="post" class="alert alert-primary" style='margin: 10%'>
         {% csrf_token %}
         <h2><label for="your_mail">Enter your email: </label></h2><br>
-        <h2><input pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" id="your_mail" type="text" name="mail" value="{{ mail }}"></h2><br>
+        <h2><input pattern="^[_A-z0-9-]+(.[_A-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" id="your_mail" type="text" name="mail" value="{{ mail }}"></h2><br>
         <br>
         <h2><label for="your_pass">Enter your password: </label></h2><br>
         <h2><input id="your_pass" type="password" name="pass" value="{{ pass }}"></h2><br>

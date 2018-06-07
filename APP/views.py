@@ -147,10 +147,7 @@ def create_event(request):
     event_day = request.POST.get('day', '')
     event_price = request.POST.get('price', '')
     event_type = request.POST.get('type', '')
-    try:
-        if event_name != '':
-            get_event_by_name(event_name)
-    except(KeyError, Event.DoesNotExist):
+    if event_name != '' and event_day != '':
         create_new_event(request, event_name, event_day, event_price, event_type)
         return HttpResponseRedirect('/app/calendar/')
     return render(request, '../SharedDoors-templates/APP/createevent.html', {'title': 'Create a new event'})

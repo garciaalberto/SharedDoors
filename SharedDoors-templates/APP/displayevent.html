@@ -17,10 +17,10 @@
     {% elif event.is_completed and event.type == 'T' %}
         <h1>Task completed!</h1><br>
     {% elif not event.is_completed and event.type == 'T' %}
-        <h1><a href="{% url 'complete' event.id %}">Complete task</a></h1><br>
+        <br>
         <div style="margin: 2%;">
             <button onclick="location.href='{% url 'complete' event.id %}';" class="btn btn-success">
-            <h3>Complete task</h3>
+            <h1>Complete task</h1>
             </button>
             </div>
     {% elif event.is_completed and event.type == 'P' %}
@@ -60,7 +60,7 @@
         {% endif %}
             {% endfor %}
     {% else %}
-        {% for user in users %}
+        {% for user in event.users.all %}
             <h3 class="float-center" style="margin: 5%"> {{ user.name }} got 100 points from {{ event.name }} </h3>
         {% endfor %}
     {% endif %}

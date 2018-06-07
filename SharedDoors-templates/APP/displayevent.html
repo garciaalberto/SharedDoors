@@ -7,7 +7,7 @@
     <div style="margin: 5%" class="alert-secondary">
     <h5><a href="{% url 'home' %}">Home</a> > <a href="{% url 'calendar' %}"> Calendar </a> > {{ title }}</h5>
     </div>
-    <div class="alert-primary">
+    <div class="alert-primary" style='margin: 10%'>
     {% if event.type == 'B' %}
         <h1>Don't forget to wish a happy birthday!</h1><br>
     {% elif event.type == 'R' %}

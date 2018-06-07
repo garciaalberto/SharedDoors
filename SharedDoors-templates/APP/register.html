@@ -1,9 +1,9 @@
 {% extends "APP/base.html" %}
 
 {% block content %}
-    <div style="text-align: center">
-    <h1 style="margin: 5%" class="display-2">Register</h1><br><br>
-    <form action="{% url 'validation_register' %}" method="post" class="alert alert-primary">
+    <div style="text-align: center; margin: 5%"">
+    <h1 class="display-2">Register</h1><br><br>
+    <form action="{% url 'validation_register' %}" method="post" class="alert alert-primary" style='margin: 10%'>
         {% csrf_token %}
         <h2><label for="name">Name: </label></h2><br>
         <h2><input id="name" type="text" name="name" value="{{ user_name }}"></h2><br>

@@ -3,7 +3,7 @@
 {% block content %}
 <div style="text-align: center">
     <h1 style="margin: 5%" class="display-2">Create flat</h1><br>
-<form action="{% url 'validation_createflat' %}" method="post" class="alert alert-primary">
+<form action="{% url 'validation_createflat' %}" method="post" class="alert alert-primary" style='margin: 10%'>
         {% csrf_token %}
         <h2><label for="flat_name">Choose a name: </label></h2><br>
         <h2><input id="flat_name" type="text" name="flat_name" value="{{ flat_name }}"></h2><br>

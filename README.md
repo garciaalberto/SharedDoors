@@ -1,4 +1,4 @@
-**Shared Doors**
+#Shared Doors
 
 **Motivación.**
 
@@ -74,7 +74,7 @@ Capa de datos:
 
 Esta capa se encarga de ofrecer a la capa de negocio un acceso a los datos. Se ha escogido SQLite3 como base de datos por su fácil uso y adecuación al pequeño proyecto. Para las funcionalidades CRUD se usarán los modelos de Django.
 
-2. **Diagrama de clases. **
+2. **Diagrama de clases.**
 
 3. **Diagrama E/R de la base de datos.**
 
@@ -102,7 +102,7 @@ En primera instancia se eligió la metodología de cascada, fue rápidamente aba
 
 Debido a esa necesidad que no calculé ni en el anteproyecto ni durante el diseño lógico de la aplicación cambie al desarrollo en espiral a temprana edad del proyecto.
 
-**Diagrama de Gantt previo y final del desarrollo de la app. **
+**Diagrama de Gantt previo y final del desarrollo de la app.**
 
 Previo al proyecto:
 
@@ -118,7 +118,7 @@ El diagrama de Gantt pre-proyecto estaba pensado para seguir una metodología en
 
 El diagrama de Gantt posterior al proyecto muestra más un desarrollo en espiral que combina la investigación con la implementación y, casi al final de proyecto, vuelve al diseño gracias a varias pruebas por parte de usuarios reales. También muestra cierta precocidad por mi parte al empezar con la investigación y la implementación.
 
-**Presupuesto de la app para el comprador con el coste del software amortizado utilizado en cada fase del ciclo de vida de la app**
+**Presupuesto de la app para el comprador con el coste del software amortizado utilizado en cada fase del ciclo de vida de la app.**
 
 **Conclusiones.**
 

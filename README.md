@@ -10,37 +10,27 @@ Los objetivos están definidos como historias de usuario.
 
 
 Quién? Un estudiante que comparte piso con sus amigos.
-
 Qué? Quiere poder asignar tareas en un calendario virtual.
-
 Para qué? Para llevar un control sobre las tareas realizadas por cada integrante del piso y, a su vez, a modo de recordatorio.
 
 
 Quién? Un estudiante que comparte piso con sus amigos.
-
 Qué? Quiere poder crear eventos de pago en un calendario virtual, pagables desde ahí mismo. 
-
 Para qué? Para no tener que preocuparse por ir al banco cada vez que le toca pagar el alquiler y/o un servicio.
 
 
 Quién? Un estudiante que comparte piso.
-
 Qué? Quiere poder tener un registro del menú acordado por todos los compañeros de piso al principio de la semana.
-
 Para qué? Porque está cansado de gastar papel haciendo esquemas semanales y colgarlo en la nevera cada semana.
 
 
 Quién? Un estudiante que comparte piso.
-
 Qué? Quiere un sistema de puntuaciones con gráficos sobre las tareas completadas en el piso.
-
 Para qué? Para, además de dar un poco de competitividad a hacer las cosas bien, sentirse más motivado para realizar dichas tareas.
 
 
 Quién? Un olvidadizo estudiante que comparte piso.
-
 Qué? Quiere poder apuntar recordatorios en una agenda virtual.
-
 Para qué? Para no olvidar eventos que le puedan incumbir a él o a varios integrantes de su vivienda.
 
 
@@ -127,6 +117,8 @@ El diagrama de Gantt pre-proyecto estaba pensado para seguir una metodología en
 El diagrama de Gantt posterior al proyecto muestra más un desarrollo en espiral que combina la investigación con la implementación y, casi al final de proyecto, vuelve al diseño gracias a varias pruebas por parte de usuarios reales. También muestra cierta precocidad por mi parte al empezar con la investigación y la implementación.
 
 **Presupuesto de la app para el comprador con el coste del software amortizado utilizado en cada fase del ciclo de vida de la app.**
+
+![image alt text](image_4.PNG)
 
 **Conclusiones.**
 

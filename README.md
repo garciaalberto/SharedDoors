@@ -133,6 +133,7 @@ Creo que la fase de planificación se debería haber ejecutado antes de hacer el
 Durante la fase de diseño me han ayudado todos mis compañeros de piso y algunos amigos en una situación parecida, dándome feedback sobre que les parecería o no útil y usable y que les gustaría ver o no en la aplicación.
 
 También he usado mi pared para tener un esquema claro en todo momento de qué tenía que hacer.
-![image alt text](image_5.PNG)
-![image alt text](image_6.PNG)
-![image alt text](image_7.PNG)
+![image alt text](image_5.jgp)
+![image alt text](image_6.jgp)
+![image alt text](image_7.jpg)
+![image alt text](image_8.jpg)

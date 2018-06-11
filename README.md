@@ -76,7 +76,7 @@ Esta capa se encarga de ofrecer a la capa de negocio un acceso a los datos. Se h
 
 3. **Diagrama E/R de la base de datos.**
 
-![image alt text](image_0.png)
+![image alt text](image_0.PNG)
 
 **Bold** representa Primary key, *Cursive* representa Foreign key.
 

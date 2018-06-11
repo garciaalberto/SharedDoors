@@ -116,7 +116,7 @@ El diagrama de Gantt posterior al proyecto muestra más un desarrollo en espiral
 
 El desarrollo en cascada no era una buena idea, no puedes pretender aprender a usar un framework sin prototipar nada y en tres semanas y despedirte de volver a informarte sobre este durante las próximas fases del desarrollo. Y más si todavía queda una fase de diseño de por medio.
 
-120 horas me parecen pocas para hacer un proyecto que tenga atención al detalle.
+120 horas me parecen pocas para hacer un proyecto que tenga atención al detalle. Al menos si estás aprendiendo un framework.
 
 Creo que la fase de planificación se debería haber ejecutado antes de hacer el anteproyecto ya que puede que los objetivos me hayan bailado un poco.
 

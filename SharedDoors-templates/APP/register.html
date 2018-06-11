@@ -12,7 +12,7 @@
         <h2><input pattern="^[_A-z0-9-]+(.[_A-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" id="mail" type="text" name="mail" value="{{ user_mail }}"></h2><br>
         <br>
         <h2><label for="pass">Password: </label></h2><br>
-        <h2><input id="pass" type="password" name="pass" value="{{ user_pass }}"></h2><br>
+        <h2><input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$" id="pass" type="password" name="pass" value="{{ user_pass }}"></h2><br>
         <br>
         <h2><label for="pass2">Password verification: </label></h2><br>
         <h2><input id="pass2" type="password" name="pass2" value="{{ user_pass2 }}"></h2><br>

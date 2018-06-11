@@ -78,15 +78,7 @@ Esta capa se encarga de ofrecer a la capa de negocio un acceso a los datos. Se h
 
 ![image alt text](image_0.PNG)
 
-**Bold** representa Primary key, *Cursive* representa Foreign key.
-
-El modelo presenta tres entidades:
-
-·Flat-> Representa el piso o vivienda. (**ID= int**, Name= String, Key= String)
-
-·User-> Representa el usuario. (**ID= int**, Name= String, Password= String, Mail= String, Points_total= int, Points_monthly= int, *Allocation= Flat*)
-
-·Event-> Representa un evento del calendario. (**ID= int**, Name= String, Day= Date, Price= Float, *Allocation= Flat*, Type= enum, *Users= Many-to-Many User*)
+Justificación:
 
 Un usuario puede vivir en un mismo piso simultáneamente, mientras un piso puede tener varios usuarios dentro.
 
@@ -133,8 +125,8 @@ Creo que la fase de planificación se debería haber ejecutado antes de hacer el
 Durante la fase de diseño me han ayudado todos mis compañeros de piso y algunos amigos en una situación parecida, dándome feedback sobre que les parecería o no útil y usable y que les gustaría ver o no en la aplicación.
 
 También he usado mi pared para tener un esquema claro en todo momento de qué tenía que hacer.
-![image alt text](image_5.jgp)
-![image alt text](image_6.jgp)
+![image alt text](image_5.jpg)
+![image alt text](image_6.jpg)
 ![image alt text](image_7.jpg)
 ![image alt text](image_8.jpg)
 
